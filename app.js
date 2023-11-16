@@ -1,21 +1,10 @@
 const express = require("express");
-const mysql = require("mysql2");
 const bodyParser = require("body-parser");
 
 const app = express();
 const port = process.env.port || 3000;
 
 app.use(bodyParser.json());
-
-const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "db_zencommentary",
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
 
 app.post("/send-data", async (req, res) => {
   try {
